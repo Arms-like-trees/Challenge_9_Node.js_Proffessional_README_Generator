@@ -1,4 +1,4 @@
-let title = ''
+let title = response.title
 
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
@@ -10,7 +10,7 @@ inquirer
             type: 'input',
             message: 'What is the name of your Project Title?',
             name: 'title',
-          //  validate: titleInput = title ? console.log('Please enter your project title!')
+            //  validate: titleInput = title ? console.log('Please enter your project title!')
         },
         {
             type: 'input',
@@ -27,10 +27,14 @@ inquirer
             message: 'What did you learn?',
             name: 'description3'
         },
-      
-    ])
 
-;
+    ])
+    .then((response) => {
+        let title = response.title
+        console.log(title)
+    })
+
+    ;
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) { }
