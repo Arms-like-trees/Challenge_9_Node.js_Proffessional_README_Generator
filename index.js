@@ -78,9 +78,9 @@ inquirer
         let title = response.title;
         console.log(title);
         console.log(response);
-        return
+        
 
-
+        fs.writeFile('log.txt', JSON.stringify(response, function(err) {return err ? console.error(err) :console.log('Success - writfile')}))
 
     })
 
