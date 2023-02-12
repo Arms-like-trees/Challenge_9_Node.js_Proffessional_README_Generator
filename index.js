@@ -12,7 +12,7 @@ inquirer
             type: 'input',
             message: 'What is the name of your Project Title?',
             name: 'title',
-            //  validate: titleInput = title ? console.log('Please enter your project title!')
+            // validate: titleInput = title ? console.log('Please enter your project title!')
         },
         {
             type: 'input',
@@ -80,9 +80,9 @@ inquirer
         console.log(response);
         
 
-        fs.writeFile('log.txt', JSON.stringify(response, function(err) {return err ? console.error(err) :console.log('Success - writfile')}))
-
+        fs.writeFile('log.txt', JSON.stringify(response.title), (err) => {return err ? console.error(err) :console.log('Success - writfile')})
     })
+    
 
     ;
 
