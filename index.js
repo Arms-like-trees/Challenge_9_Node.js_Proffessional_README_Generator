@@ -12,13 +12,29 @@ inquirer
             type: 'input',
             message: 'What is the name of your Project Title?',
             name: 'title',
-            // validate: titleInput = title ? console.log('Please enter your project title!')
+            //validation code
+            validate: function (input) {
+                if (input === "") {
+                    return 'Please enter your project title!'
+                }
+                return true
+            }
+
+
         },
+
         {
             type: 'input',
             message: 'What is your name?',
-            name: 'name'
-        },// needs validation
+            name: 'name',
+              //validation code
+              validate: function (input) {
+                if (input === "") {
+                    return 'Please enter your name.'
+                }
+                return true
+            }
+        },
         {
             type: 'input',
             message: 'What is your email?',
@@ -26,9 +42,16 @@ inquirer
         },
         {
             type: 'input',
-            message: 'What is your username?',
-            name: 'username'
-        },// needs validation
+            message: 'What is your Github username?',
+            name: 'username',
+              //validation code
+              validate: function (input) {
+                if (input === "") {
+                    return 'Please enter your Github username!'
+                }
+                return true
+            }
+        },
         {
             type: 'input',
             message: 'What was your motivation?  Why did you build this project?',
@@ -52,42 +75,48 @@ inquirer
         {
             type: 'input',
             message: 'What is your project used for and how do you use it?',
-            name: 'usage'
-        },//validate
-        // best way to capture input for collaborators and if there are collaborators{
-        //     type: 'credits',
-        //     message: '',
-        //     name: 'credits'
-        // },// also can you run an inquirerer inside of an inquirerer?
+            name: 'usage',
+              //validation code
+              validate: function (input) {
+                if (input === "") {
+                    return 'Please enter what it is used for.'
+                }
+                return true
+            }
+        },
+      
         {
             type: 'checkbox',
             message: 'What licenses are pertinent?',
             name: 'licenses',
-            choices: ['Apache 2.0 License', 'BSD License', 'CeCILL License 2.1',  
-            'Eclipse Public License', 'GNU', 'IBM', 'Mit', 'Mozilla', 'JAM', 'Python']
+            choices: ['Apache 2.0 License', 'GNU', 'IBM', 'Mit', 'Mozilla', 'Python']
         }, {
             type: 'input',
             message: 'what test can be run to see how the project works??',
             name: 'tests'
         },
-        
-            //ADD badges
+
+        //ADD badges
 
     ])
     .then((response) => {
         let title = response.title;
         console.log(title);
         console.log(response);
-        
 
-        fs.writeFile('log.txt', JSON.stringify(response.title), (err) => {return err ? console.error(err) :console.log('Success - writfile')})
+
+        fs.writeFile('log.txt', JSON.stringify(response.title), (err) => { return err ? console.error(err) : console.log('Success - writfile') })
     })
-    
+
 
     ;
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) { }
+
+
+
+
 
 // TODO: Create a function to initialize app
 function init() {
