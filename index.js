@@ -22,19 +22,6 @@ inquirer
 
 
         },
-
-        {
-            type: 'input',
-            message: 'What is your name?',
-            name: 'name',
-              //validation code
-              validate: function (input) {
-                if (input === "") {
-                    return 'Please enter your name.'
-                }
-                return true
-            }
-        },
         {
             type: 'input',
             message: 'What is your email?',
@@ -70,7 +57,7 @@ inquirer
         {
             type: 'instalation',
             message: 'What are the steps required to install your project?  Provide a step-by-step description of how to get the development enviroment running.',
-            name: 'instalation'
+            name: 'installation'
         },
         {
             type: 'input',
@@ -86,41 +73,28 @@ inquirer
         },
       
         {
-            type: 'checkbox',
+            type: 'list',
             message: 'What licenses are pertinent?',
             name: 'licenses',
-            choices: ['Apache 2.0 License', 'GNU', 'IBM', 'Mit', 'Mozilla', 'Python']
+            choices: ['Apache 2.0 License', 'GNU', 'Mit', 'Mozilla', 'Python']
         }, {
             type: 'input',
-            message: 'what test can be run to see how the project works??',
+            message: 'What test can be run to see how the project works??',
             name: 'tests'
         },
 
         //ADD badges
 
     ])
-    .then((response) => {
-        let title = response.title;
-        console.log(title);
-        console.log(response);
+    .then((data) => {
+        const sampleReadmePageContent = generateMarkdown(data)
 
 
-        fs.writeFile('log.txt', JSON.stringify(response.title), (err) => { return err ? console.error(err) : console.log('Success - writfile') })
+        fs.writeFile('sampleREADME.md', sampleReadmePageContent, (err) => { return err ? console.error(err) : console.log('Success - writfile') })
     })
 
 
     ;
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) { }
 
 
-
-
-
-// TODO: Create a function to initialize app
-function init() {
-}
-
-// Function call to initialize app
-init();
