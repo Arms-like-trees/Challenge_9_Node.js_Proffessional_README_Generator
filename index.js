@@ -2,11 +2,16 @@
 
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
-const fs = require('fs')
+const fs = require('fs');
 const { default: Choices } = require('inquirer/lib/objects/choices');
-const generateMarkdown = require('./utils/generateMarkdown.js')
+const generateMarkdown = require('./utils/generateMarkdown.js');
 // TODO: Create an array of questions for user input
-inquirer
+
+
+
+// TODO: Create a function to initialize app
+function init() {
+    inquirer
     .prompt([
         {
             type: 'input',
@@ -77,7 +82,8 @@ inquirer
             message: 'What licenses are pertinent?',
             name: 'licenses',
             choices: ['Apache 2.0 License', 'GNU', 'Mit', 'Mozilla', 'Python']
-        }, {
+        }, 
+        {
             type: 'input',
             message: 'What test can be run to see how the project works??',
             name: 'tests'
@@ -95,6 +101,7 @@ inquirer
 
 
     ;
+}
 
-
-
+// Function call to initialize app
+init();
